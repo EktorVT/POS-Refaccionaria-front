@@ -1,0 +1,26 @@
+{
+  "title": "New Sale",
+  "user": "User",
+
+  "fields": {
+    "search": "Search Product",
+    "scan": "Scan",
+    "bar": "Bar",
+    "stock": "Stock"
+  },
+  "cart": {
+    "title": "Cart",
+    "delete": "Delete"
+  },
+  "actions": {
+    "sale": "Sale",
+    "cancel": "Cancel"
+  },
+  "errors": {
+    "findError": "Error finding products",
+    "findErrorMessage": "There was an error while searching for the product",
+    "saleSuccess": "Sale Success",
+    "saleError": "The sale could not be created",
+    "saleErrorMessage": "An error occurred while processing the sale"
+  }
+}

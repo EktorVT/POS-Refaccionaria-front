@@ -1,0 +1,134 @@
+.saleContent {
+  display: flex;
+  flex-direction: column;
+}
+
+.searchContainer {
+  position: relative;
+  margin-top: var(--space-3);
+  margin-bottom: var(--space-3);
+}
+
+.title p {
+  color: var(--color-text-muted);
+}
+
+.rightElement {
+  margin-right: 1rem;
+}
+
+.ul {
+  max-height: 300px;
+  overflow-y: auto;
+  scrollbar-width: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  z-index: 10;
+}
+.li {
+  height: 100px;
+  border: 1px solid var(--color-border);
+  padding: var(--space-3);
+  background-color: var(--color-surface);
+}
+.li:hover {
+  background-color: var(--color-surface-elevated);
+  border: 1px solid var(--color-primary);
+}
+
+.productName {
+  color: var(--color-text);
+}
+
+.barcode {
+  color: var(--color-text-secondary);
+}
+
+.productPrice {
+  color: var(--color-success);
+}
+.card {
+  margin-top: var(--space-2);
+  margin-bottom: var(--space-1);
+}
+.itemHeader {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  align-items: center;
+  gap: var(--space-2);
+}
+.itemName {
+  font-weight: 500;
+}
+.itemInfo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.quantity {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+.quantity button {
+  color: var(--color-primary);
+  background: none;
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-body);
+}
+.quantity button:hover {
+  background-color: var(--color-surface-elevated);
+}
+.itemPrice {
+  color: var(--color-success);
+}
+
+.deleteButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-1);
+  background: none;
+  color: var(--color-danger);
+  border-radius: var(--radius-sm);
+}
+.itemDelete {
+  color: var(--color-danger);
+  width: 15px;
+}
+.deleteButton:hover {
+  background-color: var(--color-surface-elevated);
+}
+
+.total {
+  margin-top: 1rem;
+}
+.totalActions {
+  margin-top: 1rem;
+  align-items: center;
+  display: flex;
+  gap: 1rem;
+}
+
+.totalPrice {
+  color: var(--color-success);
+  margin: 10px;
+}
+.totalSign {
+  color: var(--color-text);
+}
+
+@media (min-width: 1024px) {
+  .saleContent {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(400px, 0.8fr);
+    gap: var(--space-4);
+    align-items: start;
+  }
+  .cartList {
+    max-height: calc(100vh - 300px);
+    overflow-y: auto;
+  }
+}

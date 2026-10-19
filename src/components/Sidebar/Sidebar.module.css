@@ -1,0 +1,32 @@
+.sidebar {
+  width: 100%;
+  height: 100%;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+}
+
+.ul {
+  display: flex;
+  flex-direction: column;
+  margin-top: 2.5rem;
+  margin-left: 1rem;
+}
+.item {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  padding: 1rem;
+  margin-top: 10px;
+  border-radius: var(--border-xl);
+  transition:
+    border-bottom 200ms ease,
+    color 200ms ease;
+}
+.item:hover {
+  background-color: var(--color-surface-elevated);
+}
+.active {
+  border-bottom: 2px solid var(--color-primary);
+}

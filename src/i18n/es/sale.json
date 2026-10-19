@@ -1,0 +1,26 @@
+{
+  "title": "Nueva Venta",
+  "user": "Usuario",
+
+  "fields": {
+    "search": "Buscar Producto",
+    "scan": "Escanear",
+    "bar": "Barra",
+    "stock": "Stock"
+  },
+  "cart": {
+    "title": "Carrito",
+    "delete": "Eliminar"
+  },
+  "actions": {
+    "sale": "Cobrar",
+    "cancel": "Cancelar"
+  },
+  "errors": {
+    "findError": "Error buscando productos",
+    "findErrorMessage": "Ocurrió un error mientras se buscaba el producto ",
+    "saleSuccess": "Venta creada",
+    "saleError": "No se pudo crear la venta",
+    "saleErrorMessage": "Ocurrió un error al crear la venta "
+  }
+}

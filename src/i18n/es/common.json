@@ -1,0 +1,31 @@
+{
+  "actions": {
+    "save": "Guardar",
+    "cancel": "Cancelar",
+    "delete": "Eliminar",
+    "edit": "Editar",
+    "create": "Crear",
+    "search": "Buscar",
+    "close": "Cerrar",
+    "confirm": "Confirmar",
+    "back": "Volver",
+    "loading": "Loading"
+  },
+
+  "status": {
+    "active": "Activo",
+    "inactive": "Inactivo",
+    "pending": "Pendiente"
+  },
+
+  "navigation": {
+    "label": "Navegación inferior",
+    "home": "Inicio",
+    "sale": "Venta",
+    "products": "Productos",
+    "inventory": "Inventario",
+    "users": "Usuarios",
+    "earnings": "Ganancias",
+    "settings": "Configuración"
+  }
+}

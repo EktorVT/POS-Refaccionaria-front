@@ -1,0 +1,27 @@
+{
+  "title": "Reaccionaria",
+  "subtitle": "Log in to continue",
+
+  "fields": {
+    "username": {
+      "label": "Username",
+      "placeholder": "Username"
+    },
+    "password": {
+      "label": "Password",
+      "placeholder": "Password"
+    }
+  },
+
+  "actions": {
+    "login": "Log in",
+    "showPassword": "Show password",
+    "hidePassword": "Hide password"
+  },
+
+  "errors": {
+    "required": "Username and password must not be empty",
+    "errorLogin": "Could not log in",
+    "errorLoginMessage": "An error occurred while logging in"
+  }
+}
