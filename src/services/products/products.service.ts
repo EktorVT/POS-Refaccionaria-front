@@ -16,3 +16,23 @@ export const searchProduct = async (query: string): Promise<Product[]> => {
   );
   return response.data;
 };
+
+export interface ProductPayload {
+  name: string;
+  barcode: string;
+  purchasePrice: number;
+  salePrice: number;
+}
+
+export const postProduct = async (data: ProductPayload): Promise<Product> => {
+  const response = await api.post("/products", data);
+  return response.data;
+};
+
+export const patchProduct = async (
+  id: number,
+  data: Partial<ProductPayload>
+): Promise<Product> => {
+  const response = await api.patch(`/products/${id}`, data);
+  return response.data;
+};
