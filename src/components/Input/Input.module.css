@@ -20,7 +20,6 @@
 
 .inputField:focus-within {
   border-color: var(--color-primary);
-
   box-shadow: 0 0 0 2px rgb(0 230 118 / 15%);
 }
 

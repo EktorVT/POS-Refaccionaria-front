@@ -1,6 +1,5 @@
 import { type ComponentProps } from "react";
 import styles from "./Sidebar.module.css";
-import { useTranslation } from "react-i18next";
 import { useAuth } from "../../context/Auth/useAuth";
 import { NavLink } from "react-router-dom";
 import { navigationItems } from "../../config/navigation";
@@ -9,7 +8,6 @@ export default function Sidebar({
   className = "",
   ...props
 }: ComponentProps<"aside">) {
-  const { t } = useTranslation("common");
   const { user } = useAuth();
 
   const visibleItems = navigationItems.filter(
@@ -19,7 +17,7 @@ export default function Sidebar({
   return (
     <aside className={`${styles.sidebar} ${className}`} {...props}>
       <nav
-        aria-label={t("navigation.label")}
+        aria-label="Navegación Inferior"
         className={`${styles.nav} ${className}`}
         {...props}
       >
@@ -36,7 +34,7 @@ export default function Sidebar({
                   }
                 >
                   <Icon />
-                  <span>{t(item.label)}</span>
+                  <span>{item.label}</span>
                 </NavLink>
               </li>
             );

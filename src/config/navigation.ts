@@ -19,31 +19,31 @@ export interface NavigationItem {
 export const navigationItems: NavigationItem[] = [
   {
     path: "/home",
-    label: "navigation.home",
+    label: "Inicio",
     icon: Home,
     roles: ["ADMIN"]
   },
   {
     path: "/sale",
-    label: "navigation.sale",
+    label: "Venta",
     icon: ShoppingCart,
     roles: ["ADMIN", "CASHIER"]
   },
   {
     path: "/inventory",
-    label: "navigation.inventory",
+    label: "Inventario",
     icon: Package,
     roles: ["ADMIN", "CASHIER"]
   },
   {
     path: "/earnings",
-    label: "navigation.earnings",
+    label: "Ganancias",
     icon: BanknoteArrowDown,
     roles: ["ADMIN"]
   },
   {
     path: "/settings",
-    label: "navigation.settings",
+    label: "Configuración",
     icon: Settings,
     roles: ["ADMIN", "CASHIER"]
   }

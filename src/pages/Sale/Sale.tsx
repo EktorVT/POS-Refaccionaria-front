@@ -22,7 +22,6 @@ import {
   type PostSaleRequest
 } from "../../services/sale/sale.service";
 import { useToast } from "../../context/Toast/useToast";
-import { useTranslation } from "react-i18next";
 
 export default function Sale() {
   const [query, setQuery] = useState<string>("");
@@ -31,7 +30,6 @@ export default function Sale() {
   const [loading, setLoading] = useState<boolean>(false);
   const { user } = useAuth();
   const { showToast } = useToast();
-  const { t } = useTranslation("sale");
 
   useEffect(() => {
     if (!query.trim()) return;
@@ -48,8 +46,8 @@ export default function Sale() {
         console.error(error);
         showToast({
           type: "error",
-          title: t("errors.findError"),
-          message: `${t("errors.findErrorMessage")}.`
+          title: "Error buscando productos",
+          message: "Error buscando productos."
         });
         setResults([]);
       } finally {
@@ -61,7 +59,7 @@ export default function Sale() {
       cancelled = true;
       clearTimeout(timeoutId);
     };
-  }, [query, showToast, t]);
+  }, [query, showToast]);
 
   const handleIncrease = (productId: number) => {
     setCart((prev) => increaseQuantity(prev, productId));
@@ -85,14 +83,14 @@ export default function Sale() {
 
       showToast({
         type: "success",
-        title: `${t("errors.saleSuccess")}`,
-        message: `${t("actions.sale")} #${response.saleId} · $${response.total}`
+        title: "Venta creada",
+        message: `Cobrar #${response.saleId} · $${response.total}`
       });
     } catch (error) {
       showToast({
         type: "error",
-        title: `${t("errors.saleError")}`,
-        message: `${t("errors.saleErrorMessage")}.`
+        title: "No se pudo crear la venta",
+        message: "No se pudo crear la venta"
       });
       console.log(error);
     }
@@ -130,18 +128,16 @@ export default function Sale() {
     <div className={styles.saleContent}>
       <section className={styles.products}>
         <div className={styles.title}>
-          <h3>{t("title")}</h3>
-          <p>
-            {t("user")}: {user?.username}
-          </p>
+          <h3>Nueva Venta</h3>
+          <p>Usuario: {user?.username}</p>
         </div>
         <div className={styles.searchContainer}>
           <Input
             value={query}
-            placeholder={t("fields.search")}
+            placeholder="Buscar Producto"
             icon={<Search />}
             rightElement={
-              <button className={styles.rightElement}>{t("scan")}</button>
+              <button className={styles.rightElement}>Escanear</button>
             }
             onChange={(e) => {
               setQuery(e.target.value);
@@ -160,8 +156,7 @@ export default function Sale() {
                   <div>
                     <h3 className={styles.productName}>{product.name}</h3>
                     <p className={styles.barcode}>
-                      {t("bar")}: {product.barcode} | {t("stock")}:{" "}
-                      {product.stock}
+                      Barra: {product.barcode} | Stock: {product.stock}
                     </p>
                   </div>
                   <p className={styles.productPrice}>${product.salePrice}</p>
@@ -173,7 +168,7 @@ export default function Sale() {
       </section>
 
       <section className={styles.cartSection}>
-        <h3>{t("cart.title")}</h3>
+        <h3>Nueva Venta</h3>
         <div className={styles.cartList}>
           <ul>
             {cart.map((item) => {
@@ -187,7 +182,7 @@ export default function Sale() {
                     <button
                       className={styles.deleteButton}
                       onClick={() => handleRemove(item.product.id)}
-                      aria-label={`${t("cart.delete")} ${item.product.name}`}
+                      aria-label={`Eliminar ${item.product.name}`}
                     >
                       <X className={styles.itemDelete} />
                     </button>
@@ -220,10 +215,8 @@ export default function Sale() {
             <span className={styles.totalSign}>$</span> {total}
           </p>
           <div className={styles.totalActions}>
-            <Button onClick={() => handleCreateSale()}>
-              {t("actions.sale")}
-            </Button>
-            <Button onClick={() => setCart([])}>{t("actions.cancel")}</Button>
+            <Button onClick={() => handleCreateSale()}>Cobrar</Button>
+            <Button onClick={() => setCart([])}>Cancelar</Button>
           </div>
         </div>
       </section>
