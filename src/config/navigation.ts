@@ -3,6 +3,7 @@ import {
   Home,
   Package,
   Settings,
+  ShoppingBasket,
   ShoppingCart
 } from "lucide-react";
 
@@ -40,6 +41,12 @@ export const navigationItems: NavigationItem[] = [
     label: "Ganancias",
     icon: BanknoteArrowDown,
     roles: ["ADMIN"]
+  },
+  {
+    path: "/products",
+    label: "Productos",
+    icon: ShoppingBasket,
+    roles: ["ADMIN", "CASHIER"]
   },
   {
     path: "/settings",

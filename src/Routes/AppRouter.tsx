@@ -10,6 +10,7 @@ import Inventory from "../pages/Inventory/Inventory";
 import Earnings from "../pages/Earnings/Earnings";
 import SettingsPage from "../pages/SettingsPage/SettingsPage";
 import { ToastProvider } from "../context/Toast/ToastProvider";
+import Products from "../pages/Products/Products";
 
 export default function AppRouter() {
   return (
@@ -26,6 +27,7 @@ export default function AppRouter() {
               <Route path="/sale" element={<Sale />} />
               <Route path="/inventory" element={<Inventory />} />
               <Route path="/settings" element={<SettingsPage />} />
+              <Route path="/products" element={<Products />} />
 
               <Route path="*" element={<Sale />} />
 
