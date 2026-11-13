@@ -1,0 +1,86 @@
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.details {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--space-2) var(--space-4);
+  margin: 0;
+}
+
+.details dt {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-small);
+}
+
+.details dd {
+  margin: 0;
+  color: var(--color-text);
+}
+
+.price {
+  color: var(--color-success);
+}
+
+.muted {
+  color: var(--color-text-muted);
+  font-size: var(--font-size-small);
+}
+
+.codeSection {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--color-border);
+}
+
+.barcodeBox {
+  display: flex;
+  justify-content: center;
+  background: #fff;
+  padding: var(--space-3);
+  border-radius: var(--radius-md);
+}
+
+.barcode {
+  max-width: 100%;
+  height: auto;
+}
+
+.printRow {
+  display: flex;
+  align-items: flex-end;
+  gap: var(--space-3);
+}
+
+.copies {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  font-size: var(--font-size-small);
+  color: var(--color-text-secondary);
+}
+
+.copies input {
+  width: 72px;
+  background: var(--color-surface);
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-2) var(--space-3);
+  font: inherit;
+}
+
+.copies input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+}
+
+.actions {
+  display: flex;
+  gap: var(--space-3);
+}

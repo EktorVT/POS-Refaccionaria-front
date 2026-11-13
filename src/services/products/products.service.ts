@@ -42,3 +42,8 @@ export const patchProduct = async (
   const response = await api.patch(`/products/${id}`, data);
   return response.data;
 };
+
+export const generateProductBarcode = async (id: number): Promise<Product> => {
+  const response = await api.post(`/products/${id}/barcode`);
+  return response.data;
+};

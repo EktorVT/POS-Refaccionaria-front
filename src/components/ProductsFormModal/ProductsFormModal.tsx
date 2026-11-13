@@ -5,6 +5,7 @@ import Input from "../Input/Input";
 import Button from "../Button/Button";
 import { useToast } from "../../context/Toast/useToast";
 import {
+  generateProductBarcode,
   patchProduct,
   postProduct
 } from "../../services/products/products.service";
@@ -50,6 +51,8 @@ export default function ProductFormModal({
   const [minStock, setMinStock] = useState(String(product?.minStock ?? 1));
   const [stock, setStock] = useState("0");
   const [submitting, setSubmitting] = useState(false);
+
+  const [generating, setGenerating] = useState(false);
 
   const purchase = Number(purchasePrice);
   const sale = Number(salePrice);
@@ -120,6 +123,31 @@ export default function ProductFormModal({
     }
   };
 
+  const handleGenerate = async () => {
+    if (!product || generating) return;
+
+    setGenerating(true);
+    try {
+      const saved = await generateProductBarcode(product.id);
+      setBarcode(saved.barcode ?? "");
+      onSaved?.(saved);
+      showToast({
+        type: "success",
+        title: "Código generado",
+        message: saved.barcode ?? ""
+      });
+    } catch (error) {
+      console.error(error);
+      showToast({
+        type: "error",
+        title: "No se pudo generar el código",
+        message: "Intenta de nuevo."
+      });
+    } finally {
+      setGenerating(false);
+    }
+  };
+
   return (
     <Modal
       isOpen
@@ -133,9 +161,21 @@ export default function ProductFormModal({
         </label>
 
         <label className={styles.field}>
-          <span>Código de barras (opcional)</span>
+          <span>Código de barras</span>
           <Input value={barcode} onChange={(e) => setBarcode(e.target.value)} />
+          {!isEdit && (
+            <small className={styles.hint}>
+              Si el producto no trae código, déjalo vacío y se genera uno
+              interno al guardar.
+            </small>
+          )}
         </label>
+
+        {isEdit && !product.barcode && barcode.trim() === "" && (
+          <Button onClick={handleGenerate}>
+            {generating ? "Generando..." : "Generar código interno"}
+          </Button>
+        )}
 
         <div className={styles.row}>
           <label className={styles.field}>

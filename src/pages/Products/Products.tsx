@@ -12,6 +12,7 @@ import {
   getProducts
 } from "../../services/products/products.service";
 import type { Product, ProductFilters } from "../../types/products";
+import ProductDetailModal from "../../components/ProductDetailModal/ProductDetailModal";
 import styles from "./Products.module.css";
 
 const PAGE_SIZE = 25;
@@ -43,6 +44,7 @@ export default function Products() {
   const [refresh, setRefresh] = useState(0);
   const [creating, setCreating] = useState(false);
   const [editing, setEditing] = useState<Product | null>(null);
+  const [viewing, setViewing] = useState<Product | null>(null);
 
   const debouncedQ = useDebouncedValue(q.trim(), 300);
 
@@ -195,7 +197,15 @@ export default function Products() {
               </thead>
               <tbody>
                 {products.map((p) => (
-                  <tr key={p.id}>
+                  <tr
+                    key={p.id}
+                    tabIndex={0}
+                    className={styles.row}
+                    onClick={() => setViewing(p)}
+                    onKeyDown={(e) => {
+                      if (e.key === "Enter") setViewing(p);
+                    }}
+                  >
                     <td className={styles.name}>
                       <strong>{p.name}</strong>
                       {p.barcode && (
@@ -221,7 +231,10 @@ export default function Products() {
                       <td>
                         <button
                           className={styles.edit}
-                          onClick={() => setEditing(p)}
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            setEditing(p);
+                          }}
                           aria-label={`Editar ${p.name}`}
                         >
                           <Pencil size={16} />
@@ -266,6 +279,19 @@ export default function Products() {
             setEditing(null);
           }}
           onSaved={() => setRefresh((r) => r + 1)}
+        />
+      )}
+      {viewing && (
+        <ProductDetailModal
+          key={viewing.id}
+          product={viewing}
+          isAdmin={isAdmin}
+          onClose={() => setViewing(null)}
+          onEdit={(p) => {
+            setViewing(null);
+            setEditing(p);
+          }}
+          onChanged={() => setRefresh((r) => r + 1)}
         />
       )}
     </div>

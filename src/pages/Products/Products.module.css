@@ -200,3 +200,10 @@
 .pages button:disabled {
   opacity: 0.4;
 }
+.row {
+  cursor: pointer;
+}
+
+.row:focus-visible td {
+  background: var(--color-surface-elevated);
+}
