@@ -1,12 +1,25 @@
-import type { Product } from "../../types/products";
 import api from "../api/axios";
+import type {
+  CategoryGroup,
+  PaginatedProducts,
+  Product,
+  ProductFilters,
+  ProductPayload
+} from "../../types/products";
 
 export interface GetProductRequest {
   id: string;
 }
 
-export const getProduct = async (data: GetProductRequest): Promise<Product> => {
-  const response = await api.get(`/products/${data.id}`);
+export const getProducts = async (
+  filters: ProductFilters = {}
+): Promise<PaginatedProducts> => {
+  const response = await api.get("/products", { params: filters });
+  return response.data;
+};
+
+export const getCategories = async (): Promise<CategoryGroup[]> => {
+  const response = await api.get("/products/categories");
   return response.data;
 };
 
@@ -17,13 +30,6 @@ export const searchProduct = async (query: string): Promise<Product[]> => {
   return response.data;
 };
 
-export interface ProductPayload {
-  name: string;
-  barcode: string;
-  purchasePrice: number;
-  salePrice: number;
-}
-
 export const postProduct = async (data: ProductPayload): Promise<Product> => {
   const response = await api.post("/products", data);
   return response.data;
@@ -31,8 +37,13 @@ export const postProduct = async (data: ProductPayload): Promise<Product> => {
 
 export const patchProduct = async (
   id: number,
-  data: Partial<ProductPayload>
+  data: Partial<Omit<ProductPayload, "stock">>
 ): Promise<Product> => {
   const response = await api.patch(`/products/${id}`, data);
+  return response.data;
+};
+
+export const generateProductBarcode = async (id: number): Promise<Product> => {
+  const response = await api.post(`/products/${id}/barcode`);
   return response.data;
 };

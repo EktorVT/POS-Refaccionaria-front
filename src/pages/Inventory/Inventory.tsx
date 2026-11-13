@@ -22,6 +22,7 @@ import {
 } from "../../types/inventory";
 import styles from "./Inventory.module.css";
 import Input from "../../components/Input/Input";
+import { useAuth } from "../../context/Auth/useAuth";
 
 const dateFormat = new Intl.DateTimeFormat("es-MX", {
   dateStyle: "short",
@@ -255,6 +256,8 @@ export default function Inventory() {
   const [dateTo, setDateTo] = useState("");
   const [refresh, setRefresh] = useState(0);
   const [selectedId, setSelectedId] = useState<number | null>(null);
+  const { user } = useAuth();
+  const isAdmin = user?.role === "ADMIN";
 
   const filters: MovementFilters = {
     type: type || undefined,
@@ -429,18 +432,19 @@ export default function Inventory() {
           </div>
         )}
       </section>
-
-      <aside className={styles.side}>
-        {selectedId === null ? (
-          <EntryForm onCreated={() => setRefresh((r) => r + 1)} />
-        ) : (
-          <MovementDetail
-            key={selectedId}
-            id={selectedId}
-            onClose={() => setSelectedId(null)}
-          />
-        )}
-      </aside>
+      {isAdmin && (
+        <aside className={styles.side}>
+          {selectedId === null ? (
+            <EntryForm onCreated={() => setRefresh((r) => r + 1)} />
+          ) : (
+            <MovementDetail
+              key={selectedId}
+              id={selectedId}
+              onClose={() => setSelectedId(null)}
+            />
+          )}
+        </aside>
+      )}
     </div>
   );
 }
