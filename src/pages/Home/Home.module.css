@@ -1,0 +1,261 @@
+.page {
+  --p-bg-card: var(--color-background, #1c1f26);
+  --p-bg-soft: var(--color-surface, #252932);
+  --p-border: var(--color-border, #2f3440);
+  --p-text: var(--color-text, #e8eaf0);
+  --p-muted: var(--color-text-secondary, #9097a6);
+  --p-accent: var(--color-primary, #4f8cff);
+  --p-positive: var(--color-success, #3ecf8e);
+  --p-negative: var(--color-danger, #ef5b5b);
+  --p-warning: var(--color-warning, #f0b429);
+
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  padding: 1.5rem;
+  color: var(--p-text);
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  padding: 4rem 0;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.title {
+  margin: 0;
+  font-size: 1.75rem;
+  font-weight: 700;
+}
+
+.date {
+  margin: 0;
+  color: var(--p-muted);
+  font-size: 0.95rem;
+}
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.4rem;
+  padding: 1.5rem 1.75rem;
+  border: 1px solid var(--p-accent);
+  border-radius: 14px;
+  background: var(--p-bg-card);
+}
+
+.heroLead {
+  margin: 0;
+  color: var(--p-muted);
+  font-size: 1rem;
+}
+
+.heroAmount {
+  margin: 0;
+  font-size: 3rem;
+  font-weight: 700;
+  line-height: 1.1;
+  font-variant-numeric: tabular-nums;
+}
+
+.heroSub {
+  margin: 0 0 0.6rem;
+  max-width: 60ch;
+  color: var(--p-muted);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.positive {
+  color: var(--p-positive);
+}
+
+.negative {
+  color: var(--p-negative);
+}
+
+.columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  padding: 1.15rem 1.25rem;
+  border: 1px solid var(--p-border);
+  border-radius: 12px;
+  background: var(--p-bg-card);
+  min-width: 0;
+}
+
+.cardTitle {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+
+.empty {
+  margin: 0;
+  color: var(--p-muted);
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.55rem 0;
+  border-bottom: 1px solid var(--p-border);
+}
+
+.row:last-child {
+  border-bottom: none;
+}
+
+.rowMain {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.rowName {
+  overflow: hidden;
+  font-size: 0.92rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.rowMeta {
+  color: var(--p-muted);
+  font-size: 0.78rem;
+}
+
+.stock {
+  flex-shrink: 0;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.stockLow {
+  background: color-mix(in srgb, var(--p-warning) 18%, transparent);
+  color: var(--p-warning);
+}
+
+.stockOut {
+  background: color-mix(in srgb, var(--p-negative) 18%, transparent);
+  color: var(--p-negative);
+}
+
+.more {
+  margin: 0;
+  color: var(--p-muted);
+  font-size: 0.85rem;
+}
+
+.topRow {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding: 0.5rem 0;
+}
+
+.topHead {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.track {
+  height: 6px;
+  border-radius: 999px;
+  background: var(--p-bg-soft);
+}
+
+.fill {
+  height: 100%;
+  border-radius: 999px;
+  background: var(--p-accent);
+}
+
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem;
+  margin-top: auto;
+}
+
+.cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.5rem 0.95rem;
+  border-radius: 8px;
+  background: var(--p-accent);
+  color: #fff;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.cta:hover {
+  filter: brightness(1.1);
+}
+
+.linkQuiet {
+  color: var(--p-muted);
+  font-size: 0.9rem;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.linkQuiet:hover {
+  color: var(--p-text);
+}
+
+.cta:focus-visible,
+.linkQuiet:focus-visible {
+  outline: 2px solid var(--p-accent);
+  outline-offset: 2px;
+}
+
+@media (max-width: 900px) {
+  .columns {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .page {
+    padding: 1rem;
+  }
+
+  .heroAmount {
+    font-size: 2.4rem;
+  }
+}
